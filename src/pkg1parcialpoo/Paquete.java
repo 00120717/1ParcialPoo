@@ -13,6 +13,10 @@ import java.util.Scanner;
  * @author R.Fuentes
  */
 public class Paquete {
+    //1=Basico, 2=Premium, 3=Ninguno
+    public int paquete;
+    
+    public void Paquete(){}
     
     public void MostrarPaquetes(){
         System.out.println("Seleccione una opcion");
@@ -48,4 +52,14 @@ public class Paquete {
         }
         
     }
+
+    public int getPaquete() {
+        return paquete;
+    }
+
+    public void setPaquete(int paquete) {
+        this.paquete = paquete;
+    }
+    
+    
 }
