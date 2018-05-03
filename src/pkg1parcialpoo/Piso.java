@@ -11,7 +11,7 @@ package pkg1parcialpoo;
  */
 public class Piso {
     private char idPiso;
-    private boolean estado;
+    private boolean estado = true;
 
     
     public Piso(char idPiso, boolean estado) {
@@ -34,5 +34,6 @@ public class Piso {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
     
 }
