@@ -10,7 +10,11 @@ package pkg1parcialpoo;
  * @author R.Fuentes
  */
 public class Reservacion {
- public int NumDias;
+    public Persona huesped;
+    public Habitacion habitacion;
+    public Precio precio;
+    public Paquete paquete;
+    public int NumDias;
 
     public Reservacion(int NumDias) {
         this.NumDias = NumDias;
