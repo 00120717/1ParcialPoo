@@ -10,8 +10,8 @@ package pkg1parcialpoo;
  * @author Oscar Lovato
  */
 public class Nombre {
-    private String nombres;
-    private String apellidos;
+    public String nombres;
+    public String apellidos;
 
     public Nombre(String nombres, String apellidos) {
         this.nombres = nombres;
