@@ -10,9 +10,9 @@ package pkg1parcialpoo;
  * @author Marvin Ramirez
  */
 public class Persona {
-    private Nombre nombre;
-    private DUI dui;
-    private int edad;
+    public Nombre nombre;
+    public DUI dui;
+    public int edad;
     
     public Persona(){};  
 
