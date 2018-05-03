@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package pkg1parcialpoo;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  *
@@ -58,17 +59,15 @@ public class AdminHotel {
     }
     public void verReservacion(int id){
         for (Reservacion reservacion : reservaciones){
-            if (reservacion.idReservacion == id){
+            if (reservacion.idReservacion== id){
                 Nombre nombre =reservacion.huesped.getNombre();
                 System.out.println("Nombre: " + nombre.getNombres() + nombre.getApellidos());
                 
                 NumCorrelativo numCorrelativo = reservacion.habitacion.getIdHabitacion();
                 System.out.println("Habitacion: " + numCorrelativo.getPiso() + numCorrelativo.getNumHabitacion());
-                
-                System.out.println("Fecha: " + reservacion.Fecha.getDia() +"/" +  reservacion.Fecha.getMes() + "/"+  reservacion.Fecha.getAnnio() );            
-                System.out.println("Estadia: " + reservacion.getNnumDias());
-                System.out.println("Precio por Dia: " + reservacion.precioPorDia.getPrecioBase());
-                System.out.println("Precio Total: " + reservacion.precioTotal.getPrecioBase());  
+                System.out.println("Fecha: " + reservacion.fecha.getDia() +"/" +  reservacion.fecha.getMes() + "/"+  reservacion.fecha.getAnnio() );            
+                System.out.println("Estadia: " + reservacion.getNumDias());
+                System.out.println("Precio Total: " + reservacion.precioTotal());  
                 break;
             }
             System.out.println("El Id no se encuentra registrado en el sistema");
