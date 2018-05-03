@@ -11,11 +11,7 @@ public class Precio {
     
     public Precio(){
     }
-    
-    public Precio (double precio){
-        precioBase = precio;
-    }
-
+   
     public double getPrecioBase() {
         return precioBase;
     }
