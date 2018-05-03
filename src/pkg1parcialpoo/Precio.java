@@ -7,7 +7,7 @@ package pkg1parcialpoo;
  */
 public class Precio {
     
-    private double precioBase;
+    public double precioBase;
     
     public Precio(){
     }
