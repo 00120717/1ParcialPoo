@@ -57,7 +57,7 @@ public class AdminHotel {
         reservaciones.add(reservacion); 
         
     }
-    public void verReservacion(int id){
+    public boolean verReservacion(int id){
         for (Reservacion reservacion : reservaciones){
             if (reservacion.idReservacion== id){
                 Nombre nombre =reservacion.huesped.getNombre();
@@ -68,31 +68,29 @@ public class AdminHotel {
                 System.out.println("Fecha: " + reservacion.fecha.getDia() +"/" +  reservacion.fecha.getMes() + "/"+  reservacion.fecha.getAnnio() );            
                 System.out.println("Estadia: " + reservacion.getNumDias());
                 System.out.println("Precio Total: " + reservacion.precioTotal());  
-                break;
+                return true;
             }
             System.out.println("El Id no se encuentra registrado en el sistema");
+            return false;
         }
         
     }
     
    
     public void modificarReservacion(int id){
-        
-       System.out.println("Que Desea Modificar? ");
-       System.out.println("1) Nombre ");
-       System.out.println("2) Habitacion");
-       System.out.println("3) Estadia");
-       System.out.println("4) Fecha");
-       System.out.println("5) Paquete");
-       System.out.print("Ingrese una Opcion: ");
-       Scanner leer = new Scanner(System.in);
-       String name = leer.next();
-       int opcion = Integer.parseInt(name);
-       
-           
-       
+
         for (Reservacion reservacion : reservaciones){
             if (reservacion.idReservacion == id){
+                System.out.println("Que Desea Modificar? ");
+                System.out.println("1) Nombre ");
+                System.out.println("2) Estadia");
+                System.out.println("3) Fecha");
+                System.out.println("4) Paquete");
+                System.out.print("Ingrese una Opcion: ");
+                Scanner leer = new Scanner(System.in);
+                String name = leer.next();
+                int opcion = Integer.parseInt(name);
+       
                 switch(opcion){
                     
                     //Cambiar Nombre
@@ -105,19 +103,15 @@ public class AdminHotel {
                     reservacion.huesped.nombre.setNombres(newName);
                     reservacion.huesped.nombre.setApellidos(newApellidos);
                     break;
-                    
-                    //Cambiar Habitacion
-                    case 2: 
-                        
                         //Cambiar Estadia
-                    case 3: System.out.println("Ingrese numero de dias: ");
+                    case 2: System.out.println("Ingrese numero de dias: ");
                     Scanner leer4 = new Scanner(System.in);
                     String newEstadia= leer4.next();
                     int estadia = Integer.parseInt(newEstadia);
                     reservacion.setNumDias(estadia);
                     break;
                     //Cambiar Fecha
-                    case 4: System.out.println("Ingrese dia: ");
+                    case 3: System.out.println("Ingrese dia: ");
                     Scanner leer5 = new Scanner(System.in);
                     String dia= leer5.next();
                     int newDia = Integer.parseInt(dia);
@@ -138,7 +132,13 @@ public class AdminHotel {
                     
                     break;
                     
-                    case 5:
+                    case 4: reservacion.paquete.MostrarPaquetes();
+                    System.out.println("Ingrese nuevo paquete: ");
+                    Scanner leer8 = new Scanner(System.in);
+                    String paquete = leer8.next();
+                    int newPaquete = Integer.parseInt(paquete);
+                    reservacion.paquete.setPaquete(newPaquete);
+                    
                         break;
                     
                 }
