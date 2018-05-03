@@ -31,17 +31,18 @@ public class AdminHotel {
     
     
     public void modificarPrecio(){
-       double precio;
+       double preci;
         System.out.println("Ingrese Precio: ");
-        precio =input.nextDouble();
+        preci =input.nextDouble();
         
-        Precio test = Habitacion.getPrecio();
-        
-        Precio.precioBase.setPrecioBase(precio);
+       
+        Precio precio =new Precio(); 
+        precio.setPrecioBase(preci);
     }
     
         public void modificarPaquete(){
-    }
+    
+        }
         public void modificarHabitacion(){
     }
         public void modificarPiso(){
