@@ -12,7 +12,8 @@ package pkg1parcialpoo;
 public class Piso {
     private char idPiso;
     private boolean estado = true;
-
+    public boolean[][] pisos = new boolean[6][10];
+    
     
     public Piso(char idPiso, boolean estado) {
         this.idPiso = idPiso;
@@ -35,5 +36,13 @@ public class Piso {
         this.estado = estado;
     }
     
-    
+    public void PisosDisponibles(){
+        
+        for(int i=0;i<7;i++){
+            for(int j=0;j<7;j++){
+                pisos[i][j]=true;
+            }
+        }
+        
+    }
 }
