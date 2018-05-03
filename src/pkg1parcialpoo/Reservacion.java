@@ -78,6 +78,10 @@ public class Reservacion {
         this.NumDias = NumDias;
     }
  
- public void precioTotal(){}
+ public double precioTotal(){
+     double precioFin;
+     precioFin=precio.getPrecioBase()*NumDias;
+     return precioFin;
+ }
 
 }
