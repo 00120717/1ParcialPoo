@@ -80,13 +80,21 @@ public class AdminHotel {
                 act[0]=1;
                 for (int i = 0; i < 7; i++) {
                     if (Piso.pisos[i] == hab[i]) {
-                        Piso.pisos[i] = act[0];
+                        Piso.pisos[i][0] = act[0];
                     }
-                    break;
-                }
+                    
+                }break;
             case 2:
-                
-
+                int[] desac=null;
+                desac[0]=0;
+                for (int i = 0; i < 7; i++) {
+                    if (Piso.pisos[i] == hab[i]) {
+                        Piso.pisos[i][0] = desac[0];
+                    }
+                    
+                }break;
+            default:
+                System.out.println("Introduzca opcion valida");
         }
 
     }
