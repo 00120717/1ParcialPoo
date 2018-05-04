@@ -12,7 +12,7 @@ package pkg1parcialpoo;
 public class Piso {
     private char idPiso;
     private boolean estado = true;
-    public boolean[][] pisos = new boolean[6][10];
+    public static int[][] pisos = new int[6][10];
     
     
     public Piso(char idPiso, boolean estado) {
@@ -40,7 +40,7 @@ public class Piso {
         
         for(int i=0;i<7;i++){
             for(int j=0;j<7;j++){
-                pisos[i][j]=true;
+                pisos[i][j]=1;
             }
         }
         
