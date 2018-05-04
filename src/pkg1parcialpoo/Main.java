@@ -37,10 +37,25 @@ public class Main {
         
         switch(opcion){
             case 1:
-                Armin.addReservacion(reservar);
+                Reservacion reserva= new Reservacion();
+                Persona huesped= new Persona();
+                int id,edad,NumDias;
+                Nombre nombre;
+                String nom, apell;
+                reserva.setIdReservacion(id);
+                nombre.setNombres(nom);
+                nombre.setApellidos(apell);
+                reserva.huesped.setNombre(nombre);
+                reserva.huesped.setEdad(edad);
+                reserva.setNumDias(NumDias);
+                reserva.precio.getPrecioBase();
+                reserva.seleccPaquete();
+                
+                
+                Armin.addReservacion(reserva);
                 break;
             case 2:
-                Armin.verReservacion(id);
+                Armin.verReservacion();
                 break;
             case 3:
                 Armin.modificarReservacion(id);
