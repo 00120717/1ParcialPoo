@@ -83,5 +83,15 @@ public class Reservacion {
      precioFin=precio.getPrecioBase()*NumDias;
      return precioFin;
  }
+ public int[][] hab = new int[6][10];
+ 
+ public void verificarHabitacion(){
+      
+         for(int i=0;i<7;i++){
+            for(int j=0;j<7;j++){
+                hab[i][j]=1;
+            }
+ 
+ }}
 
 }
