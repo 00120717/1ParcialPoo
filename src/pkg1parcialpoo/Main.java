@@ -39,28 +39,48 @@ public class Main {
             case 1:
                 Reservacion reserva= new Reservacion();
                 Persona huesped= new Persona();
-                int id,edad,NumDias;
-                Nombre nombre;
-                String nom, apell;
+                int id=0,edad=0,NumDias=0;
+                Nombre nombre = null;
+                String nom=null, apell=null;
+                System.out.println("Ingrese id de la reservacion");
+           
+                id = leer.nextInt();
                 reserva.setIdReservacion(id);
+                System.out.println("Ingrese nombres del cliente");
+                nom = leer.next();
                 nombre.setNombres(nom);
+                System.out.println("Ingrese nombres del cliente");
+                apell = leer.next();
                 nombre.setApellidos(apell);
+     
                 reserva.huesped.setNombre(nombre);
+                System.out.println("Ingrese la edad del cliente");
+                edad = leer.nextInt();
                 reserva.huesped.setEdad(edad);
+                System.out.println("Ingrese la cantidad de dias de la reservacion");
+                NumDias = leer.nextInt();
                 reserva.setNumDias(NumDias);
+                
                 reserva.precio.getPrecioBase();
+                System.out.println("Seleccione paquete");
                 reserva.seleccPaquete();
                 
                 
                 Armin.addReservacion(reserva);
                 break;
             case 2:
-                Armin.verReservacion();
+                System.out.println("Ingrese Id de la habitacion");
+                id = leer.nextInt();
+                Armin.verReservacion(id);
                 break;
             case 3:
+                System.out.println("Ingrese Id de la habitacion");
+                id = leer.nextInt();
                 Armin.modificarReservacion(id);
                 break;
             case 4:
+                System.out.println("Ingrese Id de la habitacion");
+                id = leer.nextInt();
                 Armin.cancelarReservacion(id);
                 break;
             case 5:
