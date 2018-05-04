@@ -18,9 +18,49 @@ public class Main {
      */
     public static void main(String[] args) {
         
+        int opcion;
         AdminHotel Armin = new AdminHotel();
         
         
+        System.out.println("Ingrese la opcion que desea realizar"
+                + "1.Añadir reservacion"
+                + "2.Ver reservacion"
+                + "3.Modificar reservacion"
+                + "4.cancelar reservacion"
+                + "5.Modificar paquete"
+                + "6.Modificar habitacion"
+                + "7.Modificar piso"
+                + "8.SALIR");
+        
+        Scanner leer = new Scanner(System.in);
+        opcion = leer.nextInt();
+        
+        switch(opcion){
+            case 1:
+                Armin.addReservacion(reservar);
+                break;
+            case 2:
+                Armin.verReservacion(id);
+                break;
+            case 3:
+                Armin.modificarReservacion(id);
+                break;
+            case 4:
+                Armin.cancelarReservacion(id);
+                break;
+            case 5:
+                Armin.modificarPaquete();
+                break;
+            case 6:
+                Armin.modificarHabitacion();
+                break;
+            case 7:
+                Armin.modificarPiso();
+                break;
+            default:
+                System.out.println("Ingrese una opcion de las anteriores");
+                
+        }
     }
     
 }
