@@ -104,7 +104,7 @@ public class AdminHotel {
 
     }
 
-    public boolean verReservacion(int id) {
+    public void verReservacion(int id) {
         for (Reservacion reservacion : reservaciones) {
             if (reservacion.idReservacion == id) {
                 Nombre nombre = reservacion.huesped.getNombre();
@@ -115,10 +115,9 @@ public class AdminHotel {
                 System.out.println("Fecha: " + reservacion.fecha.getDia() + "/" + reservacion.fecha.getMes() + "/" + reservacion.fecha.getAnnio());
                 System.out.println("Estadia: " + reservacion.getNumDias());
                 System.out.println("Precio Total: " + reservacion.precioTotal());
-                return true;
+                break;
             }
             System.out.println("El Id no se encuentra registrado en el sistema");
-            return false;
         }
 
     }
