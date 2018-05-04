@@ -181,13 +181,7 @@ public class AdminHotel {
                         break;
 
                     case 4:
-                        reservacion.paquete.MostrarPaquetes();
-                        System.out.println("Ingrese nuevo paquete: ");
-                        Scanner leer8 = new Scanner(System.in);
-                        String paquete = leer8.next();
-                        int newPaquete = Integer.parseInt(paquete);
-                        reservacion.paquete.setPaquete(newPaquete);
-
+                        reservacion.seleccPaquete();
                         break;
 
                 }
