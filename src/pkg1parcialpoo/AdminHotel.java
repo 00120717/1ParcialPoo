@@ -105,7 +105,9 @@ public class AdminHotel {
                 break;
         }
     }
-
+    public void addReservacion(Reservacion reservacion) {
+        reservaciones.add(reservacion);
+    }
 
     public void crearReservacion() {
         
