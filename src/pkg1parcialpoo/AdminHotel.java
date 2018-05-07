@@ -179,9 +179,328 @@ public class AdminHotel {
         }
     }
 
-    public void addReservacion(Reservacion reservacion) {
-        reservaciones.add(reservacion);
 
+    public void crearReservacion() {
+        
+        Reservacion nuevaReservacion = new Reservacion();
+        
+        //Se asigna id
+        
+            nuevaReservacion.idReservacion = AdminHotel.id + 1;
+            id++;
+            //System.out.println("El Id de la Reservacion Asignado es: " + nuevaReservacion.idReservacion );
+        
+        //Campos de clase persona/Huesped
+        Persona nuevaPersona = new Persona();
+        nuevaReservacion.huesped = nuevaPersona;
+        
+            DUI nuevoDui = new DUI();
+            nuevaPersona.dui = nuevoDui;
+            
+            int a = 0;
+            int [] codigo=new int[8];
+            int verificador;
+            
+        while (a == 0) {
+            try{
+            for (int i=0; i<8;i++){
+                
+                int newDui=11;
+                
+                while((newDui>9)||(newDui<0)){
+                System.out.print("Ingrese el " + (i+1) + " Digito de el dui: ");
+                Scanner leer = new Scanner(System.in);
+                String dui = leer.next();
+                newDui = Integer.parseInt(dui);
+                codigo[i]=newDui;
+                if ((newDui>9)||(newDui<0))System.err.println("Numero Ingresado Incorrecto!");
+                }
+              }
+                System.out.print("Ingrese el 9 Digito de el dui: ");
+                Scanner leer = new Scanner(System.in);
+                String dui = leer.next();
+                int newDui = Integer.parseInt(dui);
+                verificador = newDui;
+            nuevoDui.setCodigo(codigo);
+            nuevoDui.setVerificador(verificador);
+            
+            //if (nuevoDui.verificar(codigo)) //a=1; //Verificamos el dui, si es valido salimos de buckle
+            //a=1;
+            
+            } catch(Exception ex){
+                    System.err.println("Ingrese un Digito Valido!");
+                }
+            
+            //Verificamos si el dui se encuentra mas de 2 veces en la lista de reservaciones    
+                int cont=0;
+                int [] array1 = nuevaReservacion.huesped.dui.getCodigo();
+                int verificador1 = nuevaReservacion.huesped.dui.getVerificador();
+
+                  for (Reservacion flag : reservaciones){
+                      int [] array2 = flag.huesped.dui.getCodigo();
+                      int verificador2 = flag.huesped.dui.getVerificador();
+
+                      if((Arrays.equals(array1,array2)) && verificador1==verificador2){
+                          cont++;
+                      }
+
+                  }
+                      if ((cont>=2)||( ! nuevoDui.verificar(codigo))){
+                          System.err.println("Error No Se Puede Registrar a Esta Persona!");
+                          a=1;
+                          
+                      }
+                      else a=1;
+
+        }
+        
+        
+        System.out.println("Ingrese Nuevo Primer y Segundo Nombre: ");
+        Scanner leer = new Scanner(System.in);
+        String newName = leer.nextLine();
+        System.out.println("Ingrese Nuevo Primer y Segundo Apellido: ");
+        Scanner leer2 = new Scanner(System.in);
+        String newApellido = leer2.nextLine();
+        
+        Nombre nombre = new Nombre();
+        nuevaPersona.nombre= nombre;
+        
+        nombre.nombres =newName;
+        nombre.apellidos=newApellido;
+        
+        int newEdad = 0;
+        while(newEdad==0){
+            try{
+        System.out.print("Ingrese Edad: ");
+        Scanner leer3 = new Scanner(System.in);
+        String edad = leer3.next();
+        newEdad = Integer.parseInt(edad);
+            }
+            catch (Exception ex){
+                System.err.println("Numero Invalido!");
+            }
+        }
+        
+        nuevaPersona.edad=newEdad;
+        
+        //Campos de Habitacion
+        Habitacion nuevaHabitacion = new Habitacion();
+        nuevaReservacion.habitacion = nuevaHabitacion;
+        
+                NumCorrelativo nuevoNumCorrelativo = new NumCorrelativo();
+                nuevaHabitacion.idHabitacion = nuevoNumCorrelativo;
+                
+                                        System.out.println("Pisos disponibles");
+                                        for (String x : AdminPiso.pisosHabilitados) {
+                                            System.out.println(x);
+                                        }
+
+                                        int f = 0;
+                                        String newPiso = "";
+                                        while (f == 0) {
+                                            System.out.println("Ingrese el nuevo piso: ");
+                                            Scanner leerPiso = new Scanner(System.in);
+                                            newPiso = leerPiso.next();
+                                            newPiso= newPiso.toLowerCase();
+                                            if (!AdminPiso.pisosHabilitados.contains(newPiso)) {
+                                                System.err.println("Debe Ingresar un piso valido");
+                                            } else {
+                                                f = 1;
+                                            }
+                                        }
+                                        //System.out.println("Piso Seleccionado: " + newPiso);
+                                        
+                                        
+                                        
+                                          System.out.println("Habitaciones disponibles en piso: " + newPiso);
+                                          switch (newPiso){
+                                            case "a": 
+                                                for (int i=0;i<10;i++) {
+                                                    if (AdminPiso.pisosHabitaciones[0][i] == true)
+                                                    System.out.print( 1+ i+ ", ");
+                                                }
+                                                break;
+                                            case "b":
+                                                for (int i=0;i<10;i++) {
+                                                    if (AdminPiso.pisosHabitaciones[1][i] == true)
+                                                    System.out.print(1+ i+ ", ");
+                                                }
+                                                break;
+                                            case "c":
+                                                for (int i=0;i<10;i++) {
+                                                    if (AdminPiso.pisosHabitaciones[2][i] == true)
+                                                    System.out.print(1 + i+ ", ");
+                                                }
+                                                break;
+                                            case "d":
+                                                for (int i=0;i<10;i++) {
+                                                    if (AdminPiso.pisosHabitaciones[3][i] == true)
+                                                    System.out.print(i+1+ ", ");
+                                                }
+                                                break;
+                                            case "e":
+                                                for (int i=0;i<10;i++) {
+                                                    if (AdminPiso.pisosHabitaciones[4][i] == true)
+                                                    System.out.print(1+ i+ ", ");
+                                                }
+                                                break;
+                                            case "f":
+                                                for (int i=0;i<10;i++) {
+                                                    if (AdminPiso.pisosHabitaciones[5][i] == true)
+                                                    System.out.print(1 + i + ", ");
+                                                }
+                                                break;
+                                            default: 
+                                                System.out.println("Error");
+                                          }
+                                        
+                                        
+                                        int b = 0;
+                                        while (b == 0) {
+                                            try{
+                                            System.out.println("");
+                                            System.out.println("Ingrese el nuevo numero de habitacion: ");
+                                            Scanner leerHab = new Scanner(System.in);
+                                            String newHab = leerHab.next();
+                                            int newHab2 = Integer.parseInt(newHab);
+                                            if ((newHab2 >= 1) && (newHab2 <= 10) && (AdminPiso.verificarPisosHabitacion(newPiso, newHab2-1))) {
+                                                
+
+                                                Piso nuevoPiso = new Piso();
+                                                nuevaHabitacion.idHabitacion.piso = nuevoPiso;
+                                                nuevoPiso.letra = newPiso;
+                                                
+                                                nuevaHabitacion.idHabitacion.setNumHabitacion(newHab2);
+                                                AdminPiso.deshabilitarPisoHabitacion(newPiso, newHab2-1);
+                                                System.out.println("Se deshabilito exitosamente el " + newPiso + newHab2 + " y ahora es "+ AdminPiso.verificarPisosHabitacion(newPiso, newHab2-1) );
+                                                b = 1;
+                                            } else {
+                                                System.err.println("Error, Numero de habitacion no disponible! ");
+                                            }
+                                            } catch(Exception ex){
+                                                System.err.println("Porfavor ingrese un digito valido!" + ex);
+                                            }
+                                        }
+                //Precio nuevoPrecio = new Precio();
+                //nuevaHabitacion.setPrecio(nuevoPrecio);
+                
+        //Campos de Fecha
+        int newDia=0, newMes=0, newAnnio=0;
+        int alpha=0;
+        
+        while(alpha==0){
+            
+       
+        try{
+            
+            while((newDia<=0)||(newDia>31) ){
+        Scanner leerFecha = new Scanner(System.in);
+        System.out.print("Ingrese el Dia de la Fecha de Ingreso: ");
+         String dia = leerFecha.next();
+         newDia = Integer.parseInt(dia); 
+         
+         //System.out.println("newDia es: "+ String.valueOf(newDia).length());
+         if((newDia<=0)||(newDia>31) ) System.err.println("Ingrese un Dia Valido!");
+        }
+        
+                 
+        while((newMes<=0) || (newMes>12)){
+         Scanner leerFecha2 = new Scanner(System.in);
+         System.out.print("Ingrese el Mes de la Fecha de Ingreso: ");
+         String mes = leerFecha2.next();
+         newMes = Integer.parseInt(mes);
+         if((newMes<=0) || (newMes>12)) System.err.println("Ingrese un Mes Valido!");
+        }
+        
+        
+         while(String.valueOf(newAnnio).length() != 4){
+         Scanner leerFecha3 = new Scanner(System.in);
+         System.out.print("Ingrese el Año de la Fecha de Ingreso: ");
+         String annio = leerFecha3.next();
+         newAnnio = Integer.parseInt(annio);
+         if(String.valueOf(newAnnio).length() != 4) System.err.println("Ingrese un Año Valido!");
+         }
+         
+        Fecha fecha = new Fecha(newDia, newMes, newAnnio);
+        nuevaReservacion.fecha = fecha;
+        alpha=1;
+            
+           } catch (Exception ex){
+               System.err.println(" Ingrese un registro valido");
+           }
+        
+        }
+
+         
+        //Campos de numDias
+        int flag1 =0;
+        int newDias=0;
+        while(flag1==0){
+        try{
+        //while(flag1==0){
+        System.out.print("Ingrese la cantidad de dias de la estadia: ");
+        Scanner leerDias= new Scanner(System.in);
+         String dias = leerDias.next();
+         newDias = Integer.parseInt(dias);
+            if ((newDias>0)&&(newDias<=7)){
+           nuevaReservacion.NumDias=newDias;
+           flag1=1;
+            }
+           else {
+                   System.out.println("Numero de dias Invalido!");
+                   }
+        } catch( Exception ex){
+            System.err.println("Ingrese Un Numero Valido");
+        }
+      }
+        
+        //Campos de Precio (Precio total)
+        Precio nuevoPrecioTotal = new Precio();
+        nuevaReservacion.precio=nuevoPrecioTotal;
+        
+        double precioDeHabitacion = nuevaReservacion.habitacion.precio.getPrecioBase();
+        nuevoPrecioTotal.setPrecioBase(precioDeHabitacion*newDias);
+        
+        //Campos de paquete
+        Paquete nuevoPaquete = new Paquete();
+        nuevaReservacion.paquete = nuevoPaquete;
+        
+        /*
+        nuevaReservacion.paquete.MostrarPaquetes();
+                        System.out.println("Ingrese paquete: ");
+                        Scanner leer8 = new Scanner(System.in);
+                        String paquete = leer8.next();
+                        int newPaquete = Integer.parseInt(paquete);
+                        nuevaReservacion.paquete.setPaquete(newPaquete);
+        */
+         int OpcSelecionada = nuevaReservacion.paquete.seleccPaquete();
+         nuevaReservacion.paquete.setPaquete(OpcSelecionada);
+                        
+        
+         
+  //Verificamos si el dui se encuentra mas de 2 veces en la lista de reservaciones    
+  int cont=0;
+  int [] array1 = nuevaReservacion.huesped.dui.getCodigo();
+  int verificador1 = nuevaReservacion.huesped.dui.getVerificador();
+  
+    for (Reservacion flag : reservaciones){
+        int [] array2 = flag.huesped.dui.getCodigo();
+        int verificador2 = flag.huesped.dui.getVerificador();
+        
+        if((Arrays.equals(array1,array2)) && verificador1==verificador2){
+            cont++;
+        }
+        
+    }
+        if (cont>=2){
+            System.err.println("Esta Persona Ya ha Registrado 2 Habitaciones");
+        }
+        else{
+        addReservacion(nuevaReservacion);
+        System.out.println("Reservacion Creada Exitosamente!");
+        System.out.println("");
+        verReservacion(id);
+        }
     }
 
     public void verReservacion(int id) {
