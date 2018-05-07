@@ -10,13 +10,17 @@ package pkg1parcialpoo;
  * @author R.Fuentes
  */
 public class Fecha {
-    public int dia,mes,annio,hora;
+    public int dia,mes,annio;
+    public static int hora = 14;
 
-    public Fecha(int dia, int mes, int annio, int hora) {
+    public Fecha(int dia, int mes, int annio) {
         this.dia = dia;
         this.mes = mes;
         this.annio = annio;
-        this.hora = hora;
+    }
+    
+    public Fecha() {
+       
     }
 
     public int getDia() {
