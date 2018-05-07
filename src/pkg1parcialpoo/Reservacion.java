@@ -17,7 +17,7 @@ public class Reservacion {
     public Persona huesped;
     public Habitacion habitacion;
     public Precio precio;
-    public String paquete;
+    public Paquete paquete;
     public int NumDias;
     public Fecha fecha;
 
