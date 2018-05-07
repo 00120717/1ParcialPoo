@@ -15,41 +15,59 @@ import java.util.Scanner;
 public class Paquete {
     //1=Basico, 2=Premium, 3=Ninguno
     public int paquete;
+    public static double precioBasico=10;
+    public static double precioPremium=150;
     
     public void Paquete(){}
     
     public void MostrarPaquetes(){
-        System.out.println("Seleccione una opcion");
+        System.out.println("Paquetes Disponibles");
         System.out.println("1. Basico");
         System.out.println("2. Premium");
         System.out.println("3. Ninguno");
 }
     
-    public void seleccPaquete(){
-          int opc=0;
-        Scanner leer= new Scanner(System.in);
-        while(opc!=4){
-            MostrarPaquetes();
+    public int seleccPaquete(){
+        MostrarPaquetes();
+        
+        int opc=0;
+        
+        
+        while(opc==0){
             try{
+                System.out.print("Seleccione Una Opcion: ");
+                Scanner leer= new Scanner(System.in);
+                String packSelect = leer.next();
+                opc = Integer.parseInt(packSelect);
                 switch(opc){
                     case 1:
-                        System.out.println("-Acceso a la picina."
-                                + "-Internet ilimitado.");
+                        System.out.println("");
+                        System.out.println("Paquete Basico Contiene:");
+                        System.out.println("-Acceso a la picina");
+                        System.out.println("-Internet ilimitado");
+                        System.out.println("");
+                        return opc;
                     case 2:
                         System.out.println("-Acceso al buffet de desayuno."
                                 + "-Acceso inlimitado a la picina."
                                 + "-Servicio a la habitacion."
                                 + "Acceso ilimitado al mini bar."
                                 + "Internet ilimitado.");
+                        return opc;
+                    case 3:
+                        return opc;
                     default:
                         System.out.println("Infrese una opcion valida.");
+                        opc=0;
                 }
             }
             catch(InputMismatchException err){
                 System.err.println("Ingrese un numero");
-                leer.nextLine();
+                opc=0;
+                
             }
         }
+        return 0;
         
     }
 
