@@ -24,82 +24,9 @@ public class AdminHotel {
     
     public AdminHotel() {
         AdminPiso administradorDePiso = new AdminPiso();
-        reservaciones = new ArrayList<>();
-        
-        while(true){
-            /*
-        System.out.println("Menu Principal");
-        System.out.println("1) Modificar Precio de Habitacion");
-        System.out.println("2) Habilitar o Deshabilitar Piso");
-        System.out.println("3) Crear Nueva Reservacion");
-        System.out.println("4) Ver Reservacion");
-        System.out.println("5) Modificar Reservacion");
-        System.out.println("6) Cancelar Reservacion");
-        System.out.print("Ingrese Una Opcion: ");
-            */
-        
-        int option=0;
-           while(option==0){
-            try{
-                System.out.println("");
-                System.out.println("Menu Principal");
-                System.out.println("1) Modificar Precio de Habitacion");
-                System.out.println("2) Habilitar o Deshabilitar Piso");
-                System.out.println("3) Crear Nueva Reservacion");
-                System.out.println("4) Ver Reservacion");
-                System.out.println("5) Modificar Reservacion");
-                System.out.println("6) Cancelar Reservacion");
-                System.out.println("7) Ver Reservaciones de la Siguiente Semana");
-                System.out.print("Ingrese Una Opcion: ");
-                Scanner leerOpcion = new Scanner(System.in);
-                String opcion = leerOpcion.next();
-                option = Integer.parseInt(opcion);
-            }
-            catch(Exception ex){
-                System.err.println("Error, Ingrese un Digito! /n");
-            }
+        reservaciones = new ArrayList<>();        
         }
-        
-        switch(option){
-            case 1: modificarPrecioDeHabitacion();
-            break;
-            case 2: modificarPiso();
-            break;
-            case 3: crearReservacion();
-            break;
-            case 4: 
-                System.out.println("Ingrese El ID de la Reservacion: ");
-                Scanner leerIdReservacion = new Scanner(System.in);
-                String id = leerIdReservacion.next();
-                int idReservacion = Integer.parseInt(id);
-                verReservacion(idReservacion);
-            break;
-            case 5: 
-                System.out.print("Ingrese Id de la Reservacion a Modificar: ");
-                Scanner leerIdReservacion2 = new Scanner(System.in);
-                String id2 = leerIdReservacion2.next();
-                int idReservacion2 = Integer.parseInt(id2);
-                modificarReservacion(idReservacion2);
-            break;
-            case 6: 
-                System.out.print("Ingrese Id de la Reservacion a Cancelar: ");
-                Scanner leerIdReservacion3 = new Scanner(System.in);
-                System.out.print("el id antes : "+leerIdReservacion3 );
-                 int id3 = leerIdReservacion3.nextInt();
-           
-                System.out.print("el id que se mando: "+id3 );
-                cancelarReservacion(id3);
-            break;
-            case 7: 
-                verReservacionesSemana();
-                
-            break;
-            default: System.err.println("Error, Ingrese una opcion valida!");
-            break;
-        }
-        
-    }
- }
+ 
     
    public void verReservacionesSemana() {
     
