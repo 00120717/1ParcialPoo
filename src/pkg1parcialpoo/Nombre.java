@@ -13,11 +13,9 @@ public class Nombre {
     public String nombres;
     public String apellidos;
 
-    public Nombre(String nombres, String apellidos) {
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+    public Nombre() {
     }
-
+    
     public String getNombres() {
         return nombres;
     }
