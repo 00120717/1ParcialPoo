@@ -587,12 +587,17 @@ public class AdminHotel {
 
     public void cancelarReservacion(int id) {
 
+        Reservacion flag = new Reservacion();
+
         for (Reservacion reservacion : reservaciones) {
             System.out.println(reservacion.idReservacion);
             if (reservacion.getIdReservacion() == id) {
-                reservaciones.remove(reservacion);
+                flag=reservacion;
             }
         }
+        reservaciones.remove(flag);
+        AdminPiso.habilitarPisoHabitacion(flag.habitacion.idHabitacion.piso.letra, flag.habitacion.idHabitacion.numHabitacion);
+    }
     }
 
 }
