@@ -596,8 +596,7 @@ public class AdminHotel {
             }
         }
         reservaciones.remove(flag);
-        AdminPiso.habilitarPisoHabitacion(flag.habitacion.idHabitacion.piso.letra, flag.habitacion.idHabitacion.numHabitacion);
+        AdminPiso.deshabilitarPisoHabitacion(flag.habitacion.idHabitacion.piso.letra, flag.habitacion.idHabitacion.numHabitacion);
     }
     }
 
-}
