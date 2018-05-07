@@ -6,7 +6,9 @@
 package pkg1parcialpoo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Date;
 
 /**
  *
@@ -15,85 +17,166 @@ import java.util.Scanner;
 public class AdminHotel {
 
     private ArrayList<Reservacion> reservaciones;
-    private String id;
+    public static int id =0;
     Scanner input = new Scanner(System.in);
 
-    public String getId() {
-        return id;
-    }
-
-    public AdminHotel(String id) {
-        this.id = id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    
+    
     public AdminHotel() {
-    }
-
-    public void modificarPrecio() {
-        double preci;
-        System.out.println("Ingrese Precio: ");
-        preci = input.nextDouble();
-
-        Precio precio = new Precio();
-        precio.setPrecioBase(preci);
-    }
-
-   
-    public void modificarHabitacion() {
-        //modificar para reservar habitacion
-        System.out.println("Introduzca habitacion ");
-        char[][] hab = null;
-        int w, z;
-        w = input.nextInt();
-        z = input.nextInt();
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (Piso.pisos[i][j] == hab[w][z]) {
-                    Piso.pisos[i][j] = 0;
-                }
-
+        AdminPiso administradorDePiso = new AdminPiso();
+        reservaciones = new ArrayList<>();
+        
+        while(true){
+            /*
+        System.out.println("Menu Principal");
+        System.out.println("1) Modificar Precio de Habitacion");
+        System.out.println("2) Habilitar o Deshabilitar Piso");
+        System.out.println("3) Crear Nueva Reservacion");
+        System.out.println("4) Ver Reservacion");
+        System.out.println("5) Modificar Reservacion");
+        System.out.println("6) Cancelar Reservacion");
+        System.out.print("Ingrese Una Opcion: ");
+            */
+        
+        int option=0;
+           while(option==0){
+            try{
+                System.out.println("");
+                System.out.println("Menu Principal");
+                System.out.println("1) Modificar Precio de Habitacion");
+                System.out.println("2) Habilitar o Deshabilitar Piso");
+                System.out.println("3) Crear Nueva Reservacion");
+                System.out.println("4) Ver Reservacion");
+                System.out.println("5) Modificar Reservacion");
+                System.out.println("6) Cancelar Reservacion");
+                System.out.println("7) Ver Reservaciones de la Siguiente Semana");
+                System.out.print("Ingrese Una Opcion: ");
+                Scanner leerOpcion = new Scanner(System.in);
+                String opcion = leerOpcion.next();
+                option = Integer.parseInt(opcion);
             }
-
+            catch(Exception ex){
+                System.err.println("Error, Ingrese un Digito! /n");
+            }
         }
+        
+        switch(option){
+            case 1: modificarPrecioDeHabitacion();
+            break;
+            case 2: modificarPiso();
+            break;
+            case 3: crearReservacion();
+            break;
+            case 4: 
+                System.out.println("Ingrese El ID de la Reservacion: ");
+                Scanner leerIdReservacion = new Scanner(System.in);
+                String id = leerIdReservacion.next();
+                int idReservacion = Integer.parseInt(id);
+                verReservacion(idReservacion);
+            break;
+            case 5: 
+                System.out.print("Ingrese Id de la Reservacion a Modificar: ");
+                Scanner leerIdReservacion2 = new Scanner(System.in);
+                String id2 = leerIdReservacion2.next();
+                int idReservacion2 = Integer.parseInt(id2);
+                modificarReservacion(idReservacion2);
+            break;
+            case 6: 
+                System.out.print("Ingrese Id de la Reservacion a Cancelar: ");
+                Scanner leerIdReservacion3 = new Scanner(System.in);
+                System.out.print("el id antes : "+leerIdReservacion3 );
+                 int id3 = leerIdReservacion3.nextInt();
+           
+                System.out.print("el id que se mando: "+id3 );
+                cancelarReservacion(id3);
+            break;
+            case 7: 
+                verReservacionesSemana();
+                
+            break;
+            default: System.err.println("Error, Ingrese una opcion valida!");
+            break;
+        }
+        
+    }
+ }
+    
+   public void verReservacionesSemana() {
+    
+    Date date = new Date();
+    java.time.LocalDate localDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+    
+    
+    
+    //java.time.LocalDate test = localDate.plusDays(7);
+
+    for (int i=0; i<7;i++){
+            java.time.LocalDate test = localDate.plusDays(i);
+            int year  = test.getYear();
+            int month = test.getMonthValue();
+            int day   = test.getDayOfMonth();
+            //System.out.println("Ahora la fecha es: " + day + " "+month+" "+year);
+            
+        for (Reservacion reserv: reservaciones){
+            if((reserv.fecha.getDia()== day)&&(reserv.fecha.getMes()== month)&&(reserv.fecha.getAnnio()== year)){
+                verReservacion(reserv.idReservacion);
+                System.out.println("");
+            }
+        }
+    }
+
+   }
+
+
+    public void modificarPrecioDeHabitacion() {
+        double precio;
+        System.out.println("Ingrese Nuevo Precio: ");
+        precio = input.nextDouble();
+
+        //Precio newPrecio = new Precio();
+        
+        //newPrecio.setPrecioBase(precio);
+        Habitacion.precioInicial=precio;
+    }
+
+    public void modificarPaquete() {
 
     }
+
 
     public void modificarPiso() {
-        //activar o desactivar piso
-        System.out.println("Introduzca piso ");
-        int[][] hab = null;
-        int w[] = null, opc = 0;
-        w[0] = input.nextInt();
-        hab[0] = w;
-        System.out.println("1. Desea activar"
-                + "2. Desea desactivar");
-        switch (opc) {
+        
+        System.out.println("1) Deshabilitar Piso");
+        System.out.println("2) Habilitar Piso");
+        Scanner leer = new Scanner(System.in);
+        String opcion = leer.next();
+        int option = Integer.parseInt(opcion);
+        
+        switch(option){
             case 1:
-                int[] act=null;
-                act[0]=1;
-                for (int i = 0; i < 7; i++) {
-                    if (Piso.pisos[i] == hab[i]) {
-                        Piso.pisos[i][0] = act[0];
-                    }
-                    
-                }break;
+                
+                System.out.println("Pisos Actualmente Habilitado: ");
+                System.out.println(AdminPiso.pisosHabilitados.toString());
+                System.out.println("Ingrese letra del nivel a deshabilitar: ");
+                Scanner leer2 = new Scanner(System.in);
+                String letra = leer.next();
+                if (AdminPiso.deshabilitarPiso(letra)) {
+                    System.out.println("Piso ha sido deshabilitado");
+                } else {
+                    System.out.println("Error");
+                }
+                break;
             case 2:
-                int[] desac=null;
-                desac[0]=0;
-                for (int i = 0; i < 7; i++) {
-                    if (Piso.pisos[i] == hab[i]) {
-                        Piso.pisos[i][0] = desac[0];
-                    }
-                    
-                }break;
-            default:
-                System.out.println("Introduzca opcion valida");
+                System.out.println("Ingrese letra del nivel a habilitar: ");
+                Scanner leer3 = new Scanner(System.in);
+                String letra2 = leer.next();
+                if (AdminPiso.habilitarPiso(letra2)) {
+                    System.out.println("Piso ha sido habilitado");
+                } else {
+                    System.out.println("Error");
+                }
+                break;
         }
-
     }
 
     public void addReservacion(Reservacion reservacion) {
@@ -105,17 +188,34 @@ public class AdminHotel {
         for (Reservacion reservacion : reservaciones) {
             if (reservacion.idReservacion == id) {
                 Nombre nombre = reservacion.huesped.getNombre();
-                System.out.println("Nombre: " + nombre.getNombres() + nombre.getApellidos());
+                System.out.println("Nombre: " + nombre.getNombres() + " " +  nombre.getApellidos());
 
                 NumCorrelativo numCorrelativo = reservacion.habitacion.getIdHabitacion();
-                System.out.println("Habitacion: " + numCorrelativo.getPiso() + numCorrelativo.getNumHabitacion());
-                System.out.println("Fecha: " + reservacion.fecha.getDia() + "/" + reservacion.fecha.getMes() + "/" + reservacion.fecha.getAnnio());
-                System.out.println("Estadia: " + reservacion.getNumDias());
-                System.out.println("Precio Total: " + reservacion.precioTotal());
+                System.out.println("Habitacion: " + numCorrelativo.piso.getLetra() + numCorrelativo.getNumHabitacion());
+                if(numCorrelativo.numHabitacion%2 ==0) System.out.println("Tipo de Habitacion: Doble");
+                else System.out.println("Tipo de Habitacion: Sencilla");
+                
+                System.out.println("Estadia: " + reservacion.getNumDias() + " Dias");
+                System.out.println("Fecha de Ingreso: " + reservacion.fecha.dia + " / " + reservacion.fecha.mes + " / " + reservacion.fecha.annio);
+                System.out.println("Paquete: " + reservacion.paquete.paquete);
+                System.out.println("Precio Por Dia: " + reservacion.habitacion.precio.precioBase);
+                System.out.println("Precio de la Estadia: $" + (reservacion.habitacion.precio.precioBase * reservacion.NumDias));
+                if (reservacion.paquete.paquete == 1){
+                        System.out.println("Precio Total: $" + (reservacion.habitacion.precio.precioBase + Paquete.precioBasico)* reservacion.NumDias);
+                }
+                if (reservacion.paquete.paquete == 2){
+                        System.out.println("Precio Total: $" + (reservacion.habitacion.precio.precioBase + Paquete.precioPremium)* reservacion.NumDias);
+                }
+                if (reservacion.paquete.paquete == 3){
+                        System.out.println("Precio Total Por Cobrar a Tarjeta de Credito: $" + (reservacion.habitacion.precio.precioBase )* reservacion.NumDias);
+                }
+                
+                System.out.println("Id de la Reservacion: " + reservacion.idReservacion);
                 break;
             }
-            System.out.println("El Id no se encuentra registrado en el sistema");
+            
         }
+        //System.out.println("El Id no se encuentra registrado en el sistema");
 
     }
 
@@ -128,6 +228,7 @@ public class AdminHotel {
                 System.out.println("2) Estadia");
                 System.out.println("3) Fecha");
                 System.out.println("4) Paquete");
+                System.out.println("5) Habitacion de la reservacion");
                 System.out.print("Ingrese una Opcion: ");
                 Scanner leer = new Scanner(System.in);
                 String name = leer.next();
@@ -178,8 +279,58 @@ public class AdminHotel {
                         break;
 
                     case 4:
-                        reservacion.seleccPaquete();
+                        reservacion.paquete.MostrarPaquetes();
+                        System.out.println("Ingrese nuevo paquete: ");
+                        Scanner leer8 = new Scanner(System.in);
+                        String paquete = leer8.next();
+                        int newPaquete = Integer.parseInt(paquete);
+                        reservacion.paquete.setPaquete(newPaquete);
+
                         break;
+                        
+                    case 5: 
+                    System.out.println("Pisos disponibles");
+                    for(String x: AdminPiso.pisosHabilitados){
+                        System.out.println(x);
+                    }
+                    
+                    int a =0;
+                    String newPiso = "";
+                    while(a == 0){
+                    System.out.println("Ingrese el nuevo piso: ");
+                    Scanner leerPiso = new Scanner(System.in);
+                    newPiso = leerPiso.next();
+                    newPiso= newPiso.toLowerCase();
+                    if (! AdminPiso.pisosHabilitados.contains(newPiso)){
+                        System.out.println("Debe Ingresar un piso valido");
+                        }
+                    else{
+                        a = 1;
+                     }
+                    }
+                     System.out.println("Piso Seleccionado: " + newPiso);
+                     
+                     
+                    int b=0;
+                    while(b==0){
+                    System.out.println("Ingrese el nuevo numero de habitacion: ");
+                    Scanner leerHab = new Scanner(System.in);
+                    String newHab = leerHab.next();
+                    int newHab2 = Integer.parseInt(newHab);
+                    if ((newHab2 >= 1 ) && (newHab2 <= 10) && (AdminPiso.verificarPisosHabitacion(newPiso, newHab2))){
+                        reservacion.habitacion.idHabitacion.piso.setLetra(newPiso);
+                        reservacion.habitacion.idHabitacion.setNumHabitacion(newHab2);
+                        AdminPiso.deshabilitarPisoHabitacion(newPiso, newHab2);
+                        b=1;
+                    }
+                    else{
+                        System.out.println("Error ");
+                    }
+                   }
+                    
+                    
+                    
+                    
 
                 }
             }
@@ -189,6 +340,7 @@ public class AdminHotel {
     public void cancelarReservacion(int id) {
 
         for (Reservacion reservacion : reservaciones) {
+            System.out.println(reservacion.idReservacion);
             if (reservacion.getIdReservacion() == id) {
                 reservaciones.remove(reservacion);
             }
