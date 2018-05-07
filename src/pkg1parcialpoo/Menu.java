@@ -50,7 +50,7 @@ public class Menu {
         }
         
         switch(option){
-            case 1: adminHotel.modificarPrecio();
+            case 1: adminHotel.modificarPrecioDeHabitacion();
             break;
             case 2: adminHotel.modificarPiso();
             break;
