@@ -7,42 +7,24 @@ package pkg1parcialpoo;
 
 /**
  *
- * @author Marvin Ramirez
+ * @author 00161617
  */
 public class Piso {
-    private char idPiso;
-    private boolean estado = true;
-    public static int[][] pisos = new int[6][10];
+    public String letra;
     
     
-    public Piso(char idPiso, boolean estado) {
-        this.idPiso = idPiso;
-        this.estado = estado;
-    }
-    
-    public char getIdPiso() {
-        return idPiso;
-    }
-
-    public void setIdPiso(char idPiso) {
-        this.idPiso = idPiso;
-    }
-
-    public boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-    
-    public void PisosDisponibles(){
-        
-        for(int i=0;i<7;i++){
-            for(int j=0;j<7;j++){
-                pisos[i][j]=1;
-            }
-        }
+    public Piso() {
+        letra="";
         
     }
+
+    public String getLetra() {
+        return letra;
+    }
+
+    public void setLetra(String letra) {
+        this.letra = letra;
+    }
+    
+    
 }
