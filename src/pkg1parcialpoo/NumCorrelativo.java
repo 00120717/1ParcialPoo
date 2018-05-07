@@ -5,8 +5,8 @@ package pkg1parcialpoo;
  * @author 00161617
  */
 public class NumCorrelativo {
-    private Piso piso;
-    private int numHabitacion;
+    public Piso piso;
+    public int numHabitacion;
 
     public Piso getPiso() {
         return piso;
