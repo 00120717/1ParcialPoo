@@ -5,6 +5,8 @@
  */
 package pkg1parcialpoo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author R.Fuentes,00161617
