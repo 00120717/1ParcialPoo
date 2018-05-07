@@ -11,7 +11,7 @@ package pkg1parcialpoo;
  */
 public class DUI {
     private int [] codigo=new int[8];
-    private int verificador;
+    private static int verificador;
 
     public DUI() {
     }
@@ -32,7 +32,8 @@ public class DUI {
         this.verificador = verificador;
     }
     public boolean verificar(){
-        int verificador=1,cont=9,var;
+        
+        int cont=9,var;
         int suma=0,mod=0,ver=0;
         for(int i=0;i<8;i++){
                var=codigo[i]*cont;
