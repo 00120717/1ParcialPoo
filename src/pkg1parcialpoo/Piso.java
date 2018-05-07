@@ -7,7 +7,7 @@ package pkg1parcialpoo;
 
 /**
  *
- * @author 00161617
+ * @author Marvin Ramirez
  */
 public class Piso {
     public String letra;
