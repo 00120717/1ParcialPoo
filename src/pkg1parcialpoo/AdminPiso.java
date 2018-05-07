@@ -83,6 +83,33 @@ public class AdminPiso {
     
 }
     
+     public static void habilitarPisoHabitacion(String letra, int numHabitacion){
+        switch (letra){
+            case "a": 
+                pisosHabitaciones[0][numHabitacion] = true;
+                break;
+            case "b":
+                pisosHabitaciones[1][numHabitacion] = true;
+                break;
+            case "c":
+                pisosHabitaciones[2][numHabitacion] = true;
+                break;
+            case "d":
+                pisosHabitaciones[3][numHabitacion] = true;
+                break;
+            case "e":
+                pisosHabitaciones[4][numHabitacion] = true;
+                break;
+            case "f":
+                pisosHabitaciones[5][numHabitacion] = true;
+                break;
+
+                
+        }
+    
+}
+    
+    
     public static boolean deshabilitarPiso(String a){
         if (pisosHabilitados.contains(a)){
             pisosHabilitados.remove(a);
