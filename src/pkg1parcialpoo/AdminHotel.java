@@ -42,10 +42,7 @@ public class AdminHotel {
         precio.setPrecioBase(preci);
     }
 
-    public void modificarPaquete() {
-
-    }
-
+   
     public void modificarHabitacion() {
         //modificar para reservar habitacion
         System.out.println("Introduzca habitacion ");
