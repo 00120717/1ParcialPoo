@@ -31,7 +31,7 @@ public class DUI {
     public void setVerificador(int verificador) {
         this.verificador = verificador;
     }
-    public boolean verificar(){
+    public static boolean verificar(int [] codigo){
         
         int cont=9,var;
         int suma=0,mod=0,ver=0;
