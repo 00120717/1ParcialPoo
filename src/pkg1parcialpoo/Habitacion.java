@@ -35,18 +35,4 @@ public class Habitacion {
         this.precio = precio;
     }
 
-    public boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-    NumCorrelativo verifica=new NumCorrelativo();
-    public boolean verfiEstado(){
-        if(verifica.verificarEstado()){
-            return true;
-        }
-        return false;
-    }
 }
