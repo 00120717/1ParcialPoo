@@ -10,13 +10,15 @@ package pkg1parcialpoo;
  * @author Oscar Lovato
  */
 public class Habitacion {
-    private NumCorrelativo idHabitacion;
-    private Precio precio;
-    private boolean estado;
+    public NumCorrelativo idHabitacion;
+    public static Precio precio;
+    public static double precioInicial = 200;
 
     public Habitacion() {
+        Precio nuevoPrecio = new Precio();
+        this.precio=nuevoPrecio;
+        nuevoPrecio.setPrecioBase(precioInicial);
     }
-
     public NumCorrelativo getIdHabitacion() {
         return idHabitacion;
     }
