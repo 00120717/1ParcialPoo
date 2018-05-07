@@ -176,7 +176,7 @@ public class AdminHotel {
                   }
                       if ((cont>=2)||( ! nuevoDui.verificar(codigo))){
                           System.err.println("Error No Se Puede Registrar a Esta Persona!");
-                          a=1;
+                          
                           
                       }
                       else a=1;
