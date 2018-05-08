@@ -13,10 +13,9 @@ import java.util.Scanner;
  */
 public class Tarjeta {
     private int[] codigo = new int[16];
-
-    public Tarjeta(int[] codigo) {
-        this.codigo = codigo;
-    }
+    
+    
+    public Tarjeta() {}
 
     public int[] getCodigo() {
         return codigo;
@@ -31,10 +30,10 @@ public class Tarjeta {
     Scanner leer = new Scanner (System.in);
      
     //metodo verificar tarjeta
-    public void Verificar(){
-        System.out.println("Inserte tarjeta");
+    public boolean Verificar(){
         
         for(int i=0; i<16; i++){
+            System.out.println("Ingrese digito " + (i+1) + " de la tarjeta ");
             dato= leer.nextInt();
             codigo[i]=dato;
         }
@@ -57,10 +56,14 @@ public class Tarjeta {
         
         
         if(suma%10==0){
-            System.out.println("Tarjeta valida");
+            
+            return true;
+            
         }else{
-            System.out.println("Tarjeta no valida");
+            
+            return false;
+            
         }
     }   
-    
+
 }
