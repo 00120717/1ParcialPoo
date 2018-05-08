@@ -34,6 +34,8 @@ public class AdminPiso {
         
     }
     
+   
+    
     public static boolean verificarPisosHabitacion(String letra, int numHabitacion){
         switch (letra){
             case "a": 
@@ -59,23 +61,23 @@ public class AdminPiso {
     
     public static void deshabilitarPisoHabitacion(String letra, int numHabitacion){
         switch (letra){
-            case "a": 
-                pisosHabitaciones[0][numHabitacion] = false;
-                break;
-            case "b":
-                pisosHabitaciones[1][numHabitacion] = false;
-                break;
-            case "c":
-                pisosHabitaciones[2][numHabitacion] = false;
-                break;
-            case "d":
-                pisosHabitaciones[3][numHabitacion] = false;
+            case "f": 
+                pisosHabitaciones[5][numHabitacion] = false;
                 break;
             case "e":
                 pisosHabitaciones[4][numHabitacion] = false;
                 break;
-            case "f":
-                pisosHabitaciones[5][numHabitacion] = false;
+            case "d":
+                pisosHabitaciones[3][numHabitacion] = false;
+                break;
+            case "c":
+                pisosHabitaciones[2][numHabitacion] = false;
+                break;
+            case "b":
+                pisosHabitaciones[1][numHabitacion] = false;
+                break;
+            case "a":
+                pisosHabitaciones[0][numHabitacion] = false;
                 break;
 
                 
@@ -117,6 +119,27 @@ public class AdminPiso {
         }
         else return false;
     }
+    
+      public static void  MostrarHabitacionesDisponibles(){
+      char ascii[]={70,69,68,67,66,65};
+      int npisos[]={1,2,3,4,5,6,7,8,9,10};
+      for (int a=0;a<ascii.length;a++){
+      
+      }
+         for (int x=0; x<6;x++){
+            for (int z=0; z<10;z++){
+                System.out.print(ascii[x]);
+                System.out.print(npisos[z] + " ");
+               System.out.print(pisosHabitaciones[x][z]+ "   ");
+            
+            
+            }
+             System.out.println();
+            }
+            
+        }
+    
+    
     
     public static boolean habilitarPiso(String a){
         if (! pisosHabilitados.contains(a)){
