@@ -62,22 +62,22 @@ public class AdminPiso {
     public static void deshabilitarPisoHabitacion(String letra, int numHabitacion){
         switch (letra){
             case "f": 
-                pisosHabitaciones[5][numHabitacion] = false;
+                pisosHabitaciones[0][numHabitacion] = false;
                 break;
             case "e":
-                pisosHabitaciones[4][numHabitacion] = false;
-                break;
-            case "d":
-                pisosHabitaciones[3][numHabitacion] = false;
-                break;
-            case "c":
-                pisosHabitaciones[2][numHabitacion] = false;
-                break;
-            case "b":
                 pisosHabitaciones[1][numHabitacion] = false;
                 break;
+            case "d":
+                pisosHabitaciones[2][numHabitacion] = false;
+                break;
+            case "c":
+                pisosHabitaciones[3][numHabitacion] = false;
+                break;
+            case "b":
+                pisosHabitaciones[4][numHabitacion] = false;
+                break;
             case "a":
-                pisosHabitaciones[0][numHabitacion] = false;
+                pisosHabitaciones[5][numHabitacion] = false;
                 break;
 
                 
@@ -87,22 +87,22 @@ public class AdminPiso {
     
      public static void habilitarPisoHabitacion(String letra, int numHabitacion){
         switch (letra){
-            case "a": 
+            case "f": 
                 pisosHabitaciones[0][numHabitacion] = true;
                 break;
-            case "b":
+            case "e":
                 pisosHabitaciones[1][numHabitacion] = true;
                 break;
-            case "c":
+            case "d":
                 pisosHabitaciones[2][numHabitacion] = true;
                 break;
-            case "d":
+            case "c":
                 pisosHabitaciones[3][numHabitacion] = true;
                 break;
-            case "e":
+            case "b":
                 pisosHabitaciones[4][numHabitacion] = true;
                 break;
-            case "f":
+            case "a":
                 pisosHabitaciones[5][numHabitacion] = true;
                 break;
 
