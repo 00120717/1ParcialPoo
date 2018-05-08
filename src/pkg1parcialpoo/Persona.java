@@ -13,6 +13,7 @@ public class Persona {
     public Nombre nombre;
     public DUI dui;
     public int edad;
+    public Tarjeta tarjeta;
     
     public Persona(){};  
 
