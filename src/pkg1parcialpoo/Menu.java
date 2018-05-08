@@ -39,6 +39,8 @@ public class Menu {
                 System.out.println("5) Modificar Reservacion");
                 System.out.println("6) Cancelar Reservacion");
                 System.out.println("7) Ver Reservaciones de la Siguiente Semana");
+                System.out.println("8) Mostrar habitaciones disponibles");
+                System.out.println("9) Salir");
                 System.out.print("Ingrese Una Opcion: ");
                 Scanner leerOpcion = new Scanner(System.in);
                 String opcion = leerOpcion.next();
@@ -83,6 +85,12 @@ public class Menu {
                 adminHotel.verReservacionesSemana();
    
             break;
+            case 8:
+                AdminPiso.MostrarHabitacionesDisponibles();
+                break;
+            case 9:
+                System.exit(0);
+                break;
             default: System.err.println("Error, Ingrese una opcion valida!");
             break;
         }
