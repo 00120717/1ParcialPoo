@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  *
- * @author R.Fuentes, 00161617
+ * @author R.Fuentes, 00161617 , Marvin Ramirez
  */
 public class AdminHotel {
 
@@ -33,21 +33,16 @@ public class AdminHotel {
     Date date = new Date();
     java.time.LocalDate localDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
     
-    
-    
-    //java.time.LocalDate test = localDate.plusDays(7);
-
     for (int i=0; i<7;i++){
             java.time.LocalDate test = localDate.plusDays(i);
             int year  = test.getYear();
             int month = test.getMonthValue();
             int day   = test.getDayOfMonth();
-            //System.out.println("Ahora la fecha es: " + day + " "+month+" "+year);
             
         for (Reservacion reserv: reservaciones){
             if((reserv.fecha.getDia()== day)&&(reserv.fecha.getMes()== month)&&(reserv.fecha.getAnnio()== year)){
                 verReservacion(reserv.idReservacion);
-                System.out.println("");
+                
             }
         }
     }
@@ -59,17 +54,12 @@ public class AdminHotel {
         double precio;
         System.out.println("Ingrese Nuevo Precio: ");
         precio = input.nextDouble();
-
-        //Precio newPrecio = new Precio();
-        
-        //newPrecio.setPrecioBase(precio);
         Habitacion.precioInicial=precio;
     }
 
     public void modificarPaquete() {
 
     }
-
 
     public void modificarPiso() {
         
@@ -117,7 +107,6 @@ public class AdminHotel {
         
             nuevaReservacion.idReservacion = AdminHotel.id + 1;
             id++;
-            //System.out.println("El Id de la Reservacion Asignado es: " + nuevaReservacion.idReservacion );
         
         //Campos de clase persona/Huesped
         Persona nuevaPersona = new Persona();
@@ -153,9 +142,6 @@ public class AdminHotel {
             nuevoDui.setCodigo(codigo);
             nuevoDui.setVerificador(verificador);
             
-            //if (nuevoDui.verificar(codigo)) //a=1; //Verificamos el dui, si es valido salimos de buckle
-            //a=1;
-            
             } catch(Exception ex){
                     System.err.println("Ingrese un Digito Valido!");
                 }
@@ -182,6 +168,17 @@ public class AdminHotel {
                       else a=1;
 
         }
+        
+        //se verifica la validez de la tarjeta de credito
+        Tarjeta tarjeta = new Tarjeta();
+        nuevaPersona.tarjeta = tarjeta;
+        
+        System.out.println("Inserte tarjeta");
+        if(nuevaPersona.tarjeta.Verificar()==false){
+            System.err.println("Tarjeta no valida "+" ingrese una tarjeta valida");
+            nuevaPersona.tarjeta.Verificar();
+            
+        }System.out.println("Tarjeta Valida");
         
         
         System.out.println("Ingrese Nuevo Primer y Segundo Nombre: ");
@@ -237,10 +234,7 @@ public class AdminHotel {
                                                 f = 1;
                                             }
                                         }
-                                        //System.out.println("Piso Seleccionado: " + newPiso);
-                                        
-                                        
-                                        
+   
                                           System.out.println("Habitaciones disponibles en piso: " + newPiso);
                                           switch (newPiso){
                                             case "a": 
@@ -301,7 +295,7 @@ public class AdminHotel {
                                                 
                                                 nuevaHabitacion.idHabitacion.setNumHabitacion(newHab2);
                                                 AdminPiso.deshabilitarPisoHabitacion(newPiso, newHab2-1);
-                                                System.out.println("Se deshabilito exitosamente el " + newPiso + newHab2 + " y ahora es "+ AdminPiso.verificarPisosHabitacion(newPiso, newHab2-1) );
+                                                System.out.println("Se reservo la habitacion " + newPiso + newHab2 );
                                                 b = 1;
                                             } else {
                                                 System.err.println("Error, Numero de habitacion no disponible! ");
@@ -310,8 +304,6 @@ public class AdminHotel {
                                                 System.err.println("Porfavor ingrese un digito valido!" + ex);
                                             }
                                         }
-                //Precio nuevoPrecio = new Precio();
-                //nuevaHabitacion.setPrecio(nuevoPrecio);
                 
         //Campos de Fecha
         int newDia=0, newMes=0, newAnnio=0;
@@ -328,7 +320,6 @@ public class AdminHotel {
          String dia = leerFecha.next();
          newDia = Integer.parseInt(dia); 
          
-         //System.out.println("newDia es: "+ String.valueOf(newDia).length());
          if((newDia<=0)||(newDia>31) ) System.err.println("Ingrese un Dia Valido!");
         }
         
@@ -394,14 +385,6 @@ public class AdminHotel {
         Paquete nuevoPaquete = new Paquete();
         nuevaReservacion.paquete = nuevoPaquete;
         
-        /*
-        nuevaReservacion.paquete.MostrarPaquetes();
-                        System.out.println("Ingrese paquete: ");
-                        Scanner leer8 = new Scanner(System.in);
-                        String paquete = leer8.next();
-                        int newPaquete = Integer.parseInt(paquete);
-                        nuevaReservacion.paquete.setPaquete(newPaquete);
-        */
          int OpcSelecionada = nuevaReservacion.paquete.seleccPaquete();
          nuevaReservacion.paquete.setPaquete(OpcSelecionada);
                         
@@ -426,8 +409,8 @@ public class AdminHotel {
         }
         else{
         addReservacion(nuevaReservacion);
-        System.out.println("Reservacion Creada Exitosamente!");
-        System.out.println("");
+        System.out.println("Reservacion Creada Exitosamente!\n");
+        System.out.println("--------------------------------------");
         verReservacion(id);
         }
     }
@@ -459,11 +442,11 @@ public class AdminHotel {
                 }
                 
                 System.out.println("Id de la Reservacion: " + reservacion.idReservacion);
+                System.out.println("--------------------------------------" );
                 break;
             }
             
         }
-        //System.out.println("El Id no se encuentra registrado en el sistema");
 
     }
 
@@ -596,7 +579,9 @@ public class AdminHotel {
             }
         }
         reservaciones.remove(flag);
-        AdminPiso.deshabilitarPisoHabitacion(flag.habitacion.idHabitacion.piso.letra, flag.habitacion.idHabitacion.numHabitacion);
+        AdminPiso.habilitarPisoHabitacion(flag.habitacion.idHabitacion.piso.letra, flag.habitacion.idHabitacion.numHabitacion);
+        System.out.println("Reservacion cancelada ");
     }
+
     }
 
