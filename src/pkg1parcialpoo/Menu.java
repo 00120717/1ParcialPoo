@@ -73,15 +73,15 @@ public class Menu {
             case 6: 
                 System.out.print("Ingrese Id de la Reservacion a Cancelar: ");
                 Scanner leerIdReservacion3 = new Scanner(System.in);
-                //System.out.print("el id antes : "+leerIdReservacion3 );
                  int hol = leerIdReservacion3.nextInt();
            
-               System.out.print("el id que se mando: "+hol );
                 adminHotel.cancelarReservacion(hol);
             break;
             case 7: 
+                System.out.println("Reservaciones de la proxima semana");
+                System.out.println("--------------------------------------");
                 adminHotel.verReservacionesSemana();
-                
+   
             break;
             default: System.err.println("Error, Ingrese una opcion valida!");
             break;
